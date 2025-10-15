@@ -1,7 +1,8 @@
 import sqlite3
+from config import DATABASE_PATH
 
 def init_db():
-    conn = sqlite3.connect('bank_data.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
 
     # جدول المستخدمين (الحسابات البنكية)
@@ -83,7 +84,7 @@ def init_db():
 
 # دالة لفتح اتصال بقاعدة البيانات
 def get_db_connection():
-    conn = sqlite3.connect('bank_data.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     conn.row_factory = sqlite3.Row # لتمكين الوصول إلى الأعمدة بالاسم
     return conn
 
