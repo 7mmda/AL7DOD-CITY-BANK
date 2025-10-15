@@ -1,10 +1,11 @@
 import discord
 from discord.ext import commands, tasks
 from discord.ui import Button, View, Select
+import os
 import sqlite3
 from datetime import datetime, timedelta
 
-from config import BOT_TOKEN, DATABASE_NAME
+from config import BOT_TOKEN, DATABASE_PATH, CURRENCY
 from database import init_db, get_db_connection
 
 intents = discord.Intents.default()
