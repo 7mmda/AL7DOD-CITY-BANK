@@ -29,8 +29,8 @@ def is_admin(member):
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}')
-    init_db()
-    print("Database ensured to be initialized.")
+    # init_db() # تم نقل الاستدعاء إلى ما قبل bot.run() لضمان التهيئة المبكرة
+    # print("Database ensured to be initialized.")
     salary_task.start()
     process_investments.start()
     print("Bot is ready!")
@@ -680,7 +680,10 @@ async def admin_menu(ctx):
 
 # ============= تشغيل البوت =============
 if BOT_TOKEN == "YOUR_BOT_TOKEN":
-    print("الرجاء تحديث ملف config.py بتوكن البوت الخاص بك.")
+    print("الرجاء تحديث ملف config.py بتوكن البوت الخاص بك أو تعيين متغير BOT_TOKEN البيئي.")
 else:
+    # التأكد من تهيئة قاعدة البيانات قبل تشغيل البوت
+    init_db()
+    print("Database initialized before bot run.")
     bot.run(BOT_TOKEN)
 
